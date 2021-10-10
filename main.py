@@ -28,10 +28,10 @@ def get_longest_div_k(lst: List[int], k: int) -> List[int]:
     :return: cea mai lunga subsecventa cu proprietatea ca toate elementele sunt divizibile cu k
     """
     subsecventa_max = []
-    for i in range(len(lst)):
-        for j in range(i, len(lst)):
-            if all_div_k(lst[i:j+1], k) is True and len(lst[i:j+1]) > len(subsecventa_max):
-                subsecventa_max = lst[i:j+1]
+    for st in range(len(lst)):
+        for dr in range(st, len(lst)):
+            if all_div_k(lst[st:dr+1], k) is True and len(lst[st:dr+1]) > len(subsecventa_max):
+                subsecventa_max = lst[st:dr+1]
     return subsecventa_max
 
 
@@ -95,10 +95,10 @@ def get_longest_prime_digits(lst: List[int]) -> List[int]:
     :return: cea mai lunga subsecventa cu proprietatea ca toate elementele sunt formate doar din cifre prime
     """
     subsecventa_max = []
-    for i in range(len(lst)):
-        for j in range(i, len(lst)):
-            if all_longest_prime_digits(lst[i:j+1]) is True and len(lst[i:j+1]) > len(subsecventa_max):
-                subsecventa_max = lst[i:j+1]
+    for st in range(len(lst)):
+        for dr in range(st, len(lst)):
+            if all_longest_prime_digits(lst[st:dr+1]) is True and len(lst[st:dr+1]) > len(subsecventa_max):
+                subsecventa_max = lst[st:dr+1]
     return subsecventa_max
 
 
