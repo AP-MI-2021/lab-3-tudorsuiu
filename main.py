@@ -4,7 +4,7 @@ from typing import List
 def all_div_k(lst: List[int], k: int) -> bool:
     """
     Determina daca toate elementele listei sunt divizibile cu k
-    :param lst: nr. intregi
+    :param lst: lista de nr. intregi
     :param k: nr. intreg
     :return: True daca toate elementele listei sunt divizibile cu k, False in caz contrar
     """
@@ -23,7 +23,7 @@ def test_all_div_k():
 def get_longest_div_k(lst: List[int], k: int) -> List[int]:
     """
     Determina cea mai lunga subsecventa cu proprietatea ca toate elementele sunt divizibile cu k
-    :param lst: nr. intregi
+    :param lst: lista de nr. intregi
     :param k: nr. intreg
     :return: cea mai lunga subsecventa cu proprietatea ca toate elementele sunt divizibile cu k
     """
@@ -68,7 +68,7 @@ def test_is_prime():
 def all_longest_prime_digits(lst: List[int]) -> bool:
     """
     Determina daca toate elementele listei sunt formate doar din cifre prime
-    :param lst: nr. reale
+    :param lst: lista de nr. intregi
     :return: True daca toate elementele sunt formate doar din cifre prime, False in caz contrar
     """
     for x in lst:
@@ -91,7 +91,7 @@ def test_all_longest_prime_digits():
 def get_longest_prime_digits(lst: List[int]) -> List[int]:
     """
     Determina cea mai lunga subsecventa cu proprietatea ca toate elementele sunt formate doar din cifre prime
-    :param lst: nr. reale
+    :param lst: lista de nr. intregi
     :return: cea mai lunga subsecventa cu proprietatea ca toate elementele sunt formate doar din cifre prime
     """
     subsecventa_max = []
