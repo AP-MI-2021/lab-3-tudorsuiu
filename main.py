@@ -22,7 +22,7 @@ def test_all_div_k():
 
 def get_longest_div_k(lst: List[int], k: int) -> List[int]:
     """
-    Determina cea mai lunga subsecventa cu proprietatea ca toate elementele sunt divizibile cu k
+    Determina cea mai lunga secventa cu proprietatea ca toate elementele sunt divizibile cu k
     :param lst: lista de nr. intregi
     :param k: nr. intreg
     :return: cea mai lunga subsecventa cu proprietatea ca toate elementele sunt divizibile cu k
@@ -90,7 +90,7 @@ def test_all_longest_prime_digits():
 
 def get_longest_prime_digits(lst: List[int]) -> List[int]:
     """
-    Determina cea mai lunga subsecventa cu proprietatea ca toate elementele sunt formate doar din cifre prime
+    Determina cea mai lunga secventa cu proprietatea ca toate elementele sunt formate doar din cifre prime
     :param lst: lista de nr. intregi
     :return: cea mai lunga subsecventa cu proprietatea ca toate elementele sunt formate doar din cifre prime
     """
@@ -108,6 +108,46 @@ def test_get_longest_prime_digits():
     assert get_longest_prime_digits([21, 24, 34, 29]) == []
 
 
+def all_primes(lst: List[int]) -> bool:
+    """
+    Determina daca toate elementele dintr-o lista sunt prime
+    :param lst: lista de nr. intregi
+    :return: True daca toate numerele sunt prime, False in caz contrar
+    """
+    for x in lst:
+        if is_prime(x) is False:
+            return False
+    return True
+
+
+def test_all_primes():
+    assert all_primes([]) is True
+    assert all_primes([0, 2]) is False
+    assert all_primes([11, 13, 17, 19, 21, 23, 29, 31]) is False
+    assert all_primes([101, 103, 107, 109, 113, 127, 131, 137]) is True
+
+
+def get_longest_all_primes(lst: List[int]) -> List[int]:
+    """
+    Determina cea mai lunga secventa cu proprietatea ca toate elementele sunt numere prime
+    :param lst: lista cu nr. intregi
+    :return: cea mai lunga secventa cu proprietatea ca toate elementele sunt numere prime
+    """
+    subsecventa_max = []
+    for st in range(len(lst)):
+        for dr in range(st,len(lst)):
+            if all_primes(lst[st:dr+1]) is True and len(lst[st:dr+1]) > len(subsecventa_max):
+                subsecventa_max = lst[st:dr+1]
+    return subsecventa_max
+
+
+def test_get_longest_all_primes():
+    assert get_longest_all_primes([]) == []
+    assert get_longest_all_primes([11, 13, 17, 19, 21, 23, 29, 31]) == [11, 13, 17, 19]
+    assert get_longest_all_primes([101, 103, 107, 109, 113, 127, 131, 137]) == [101, 103, 107, 109, 113, 127, 131, 137]
+    assert get_longest_all_primes([13, 13, 17, 19, 21, 23, 29, 31, 13])  == [13, 13, 17, 19]
+
+
 def citire_lista():
     lst = []
     n = int(input("Dati numarul de elemente: "))
@@ -120,7 +160,8 @@ def print_menu():
     print("1. Citire date")
     print("2. Determinare cea mai lunga secventa cu proprietatea ca toate numerele sunt divizibile cu k")
     print("3. Determinare cea mai lunga secventa cu proprietatea ca toate numerele sunt formate din cifre prime")
-    print("4. Iesire")
+    print("4. Determinare cea mai lunga secventa cu proprietatea ca toate numerele sunt numere prime")
+    print("5. Iesire")
 
 
 def main():
@@ -137,6 +178,8 @@ def main():
         elif optiune == "3":
             print("Cea mai lunga secventa cu proprietatea ca toate numerele sunt formate din cifre prime este: ", get_longest_prime_digits(lst))
         elif optiune == "4":
+            print("Cea mai lunga subsecventa cu proprietatea ca toate numerele sunt prime este: ", get_longest_all_primes(lst))
+        elif optiune == "5":
             should_run = False
         else:
             print("Optiune gresita!")
@@ -148,4 +191,6 @@ if __name__ == "__main__":
     test_is_prime()
     test_all_longest_prime_digits()
     test_get_longest_prime_digits()
+    test_all_primes()
+    test_get_longest_all_primes()
     main()
